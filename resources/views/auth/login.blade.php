@@ -59,13 +59,7 @@
             </a>
         </div>
 
-        <div class="alert alert-light border mt-4">
-            <small class="text-muted">
-                <strong>ข้อมูลทดลองเข้าสู่ระบบ:</strong><br>
-                ผู้ดูแลระบบ: <code>admin@assect.local</code> / <code>password</code><br>
-                เจ้าหน้าที่: <code>officer@assect.local</code> / <code>password</code>
-            </small>
-        </div>
+
     </div>
 </div>
 @endsection
