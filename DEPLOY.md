@@ -15,6 +15,7 @@ cp .env.example .env
 ```
 แก้ไขไฟล์ `.env`:
 - `APP_URL`: ตั้งเป็น Domain หรือ IP ของ Server จริง
+- `APP_PORT`: พอร์ตที่จะให้ระบบนี้ทำงาน (ค่าเริ่มต้นคือ 8000) หากชนกับระบบอื่นบน Server ให้เปลี่ยนเป็นพอร์ตที่ว่าง เช่น `8080`, `9000`
 - `DB_HOST`: ตั้งเป็น `db` (ชื่อ Service ใน docker-compose)
 - `DB_DATABASE`: assect
 - `DB_USERNAME`: laravel
