@@ -1,0 +1,48 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        user: laravel
+        uid: 1000
+    image: assect-app
+    container_name: assect-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - assect-network
+
+  db:
+    image: mysql:8.0
+    container_name: assect-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - assect-db-data:/var/lib/mysql
+    networks:
+      - assect-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: assect-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - assect-network
+
+networks:
+  assect-network:
+    driver: bridge
+
+volumes:
+  assect-db-data:

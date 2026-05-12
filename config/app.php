@@ -56,6 +56,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Public URL for QR Codes
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used for generating QR codes that need to be accessible
+    | over LAN. Set this to your LAN IP or domain (e.g., http://192.168.1.100)
+    |
+    */
+
+    'public_url' => env('APP_PUBLIC_URL', env('APP_URL', 'http://localhost')),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |

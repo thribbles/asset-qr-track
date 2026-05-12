@@ -3,23 +3,44 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Location;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Create admin user
+        User::create([
+            'name' => 'Administrator',
+            'email' => 'admin@assect.local',
+            'password' => Hash::make('password'),
+            'role' => 'admin',
         ]);
+
+        // Create officer user
+        User::create([
+            'name' => 'Officer',
+            'email' => 'officer@assect.local',
+            'password' => Hash::make('password'),
+            'role' => 'officer',
+        ]);
+
+        // Create sample locations
+        $locations = [
+            ['building' => 'Main Building', 'floor' => '1', 'room' => '101', 'detail' => 'Office'],
+            ['building' => 'Main Building', 'floor' => '1', 'room' => '102', 'detail' => 'Meeting Room'],
+            ['building' => 'Main Building', 'floor' => '2', 'room' => '201', 'detail' => 'IT Department'],
+            ['building' => 'Annex', 'floor' => '1', 'room' => 'A01', 'detail' => 'Storage'],
+            ['building' => 'Warehouse', 'floor' => 'G', 'room' => 'W01', 'detail' => 'Main Storage'],
+        ];
+
+        foreach ($locations as $location) {
+            Location::create($location);
+        }
     }
 }
